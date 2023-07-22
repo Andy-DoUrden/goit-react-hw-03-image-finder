@@ -3,7 +3,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Container } from './App.styled';
-
 import ImageGallery from 'components/ImageGallery';
 import Searchbar from 'components/Searchbar';
 
