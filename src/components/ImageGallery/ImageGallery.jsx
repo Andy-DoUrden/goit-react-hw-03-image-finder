@@ -62,7 +62,11 @@ export default class ImageGallery extends Component {
     } catch (error) {
       console.log(error);
     } finally {
-      this.setState({ loading: false });
+      this.setState(({ localPage, itemsCounter }) => ({
+        loading: false,
+        localPage: localPage + 1,
+        itemsCounter: itemsCounter + 12,
+      }));
     }
   };
 
@@ -71,25 +75,18 @@ export default class ImageGallery extends Component {
     this.props.onOpenModalClick();
   };
 
-  onLoadMoreClick = () => {
-    this.setState(({ localPage, itemsCounter }) => ({
-      localPage: localPage + 1,
-      itemsCounter: itemsCounter + 12,
+  onLoadMoreClick = async () => {
+    const newResponse = await this.fetchImages(this.state.localPage);
+
+    this.setState(({ response }) => ({
+      response: response.concat(newResponse.data.hits),
     }));
 
-    setTimeout(async () => {
-      const newResponse = await this.fetchImages(this.state.localPage);
-
-      this.setState(({ response }) => ({
-        response: response.concat(newResponse.data.hits),
-      }));
-
-      if (this.state.totalPicturs - this.state.itemsCounter < 12) {
-        this.setState({
-          isHide: true,
-        });
-      }
-    }, 0);
+    if (this.state.totalPicturs - this.state.itemsCounter < 12) {
+      this.setState({
+        isHide: true,
+      });
+    }
   };
 
   toggleImg = () => {
@@ -107,15 +104,13 @@ export default class ImageGallery extends Component {
         {response &&
           response.map(img => (
             <ImageGalleryItem
-              id={img.id}
+              key={img.id}
               webformatURL={img.webformatURL}
               onClick={() => this.onImageClick(img.largeImageURL)}
             />
           ))}
 
-        <Button onClick={this.onLoadMoreClick} isHide={isHide}>
-          Завантажити ще...
-        </Button>
+        <Button onClick={this.onLoadMoreClick} isHide={isHide} />
 
         {showModal && (
           <Modal

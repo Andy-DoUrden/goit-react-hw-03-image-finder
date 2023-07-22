@@ -1,7 +1,7 @@
 import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ id, webformatURL }) => (
-  <GalleryItem key={id}>
+const ImageGalleryItem = ({ webformatURL, onClick }) => (
+  <GalleryItem onClick={onClick}>
     <GalleryImage src={webformatURL} />
   </GalleryItem>
 );

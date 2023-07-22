@@ -35,7 +35,7 @@ export default class Searchbar extends Component {
           <NewFormValue
             type="text"
             autocomplete="off"
-            autofocus
+            autoFocus
             placeholder="Search images and photos"
             name="searchText"
             value={searchText}

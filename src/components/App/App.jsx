@@ -3,13 +3,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Container } from './App.styled';
+
 import ImageGallery from 'components/ImageGallery';
 import Searchbar from 'components/Searchbar';
 
 export default class App extends Component {
   state = {
     searchValue: '',
-    showModal: false,
+    isModalVisible: false,
   };
 
   handleSearchSubmit = searchValue => {
@@ -17,8 +18,8 @@ export default class App extends Component {
   };
 
   toggleModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
+    this.setState(({ isModalVisible }) => ({
+      isModalVisible: !isModalVisible,
     }));
   };
 
@@ -32,7 +33,7 @@ export default class App extends Component {
         <ImageGallery
           searchValue={searchValue}
           onOpenModalClick={this.toggleModal}
-          showModal={this.state.showModal}
+          showModal={this.state.isModalVisible}
         />
       </Container>
     );
