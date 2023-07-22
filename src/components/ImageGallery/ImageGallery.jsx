@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import axios from 'axios';
 
@@ -127,3 +128,9 @@ export default class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  searchValue: PropTypes.string,
+  onOpenModalClick: PropTypes.func,
+  showModal: PropTypes.bool,
+};

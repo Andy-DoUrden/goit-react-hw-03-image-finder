@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 
 const ImageGalleryItem = ({ webformatURL, onClick }) => (
@@ -7,3 +8,8 @@ const ImageGalleryItem = ({ webformatURL, onClick }) => (
 );
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.propTypes = {
+  webformatURL: PropTypes.string,
+  onClick: PropTypes.func,
+};

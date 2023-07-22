@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop, ModalContainer } from './Modal.styled';
@@ -40,3 +41,9 @@ export default class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  onClose: PropTypes.func,
+  showImg: PropTypes.bool,
+  resetImg: PropTypes.func,
+};

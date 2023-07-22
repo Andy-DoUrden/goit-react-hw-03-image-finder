@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Container } from './App.styled';
+import { Container, GalleryContainer } from './App.styled';
 
 import ImageGallery from 'components/ImageGallery';
 import Searchbar from 'components/Searchbar';
@@ -24,17 +24,19 @@ export default class App extends Component {
   };
 
   render() {
-    const { searchValue } = this.state;
+    const { searchValue, isModalVisible } = this.state;
 
     return (
       <Container>
-        <ToastContainer autoClose={3000} theme={'dark'} />
-        <Searchbar onSubmit={this.handleSearchSubmit} />
-        <ImageGallery
-          searchValue={searchValue}
-          onOpenModalClick={this.toggleModal}
-          showModal={this.state.isModalVisible}
-        />
+        <GalleryContainer>
+          <ToastContainer autoClose={3000} theme={'dark'} />
+          <Searchbar onSubmit={this.handleSearchSubmit} />
+          <ImageGallery
+            searchValue={searchValue}
+            onOpenModalClick={this.toggleModal}
+            showModal={isModalVisible}
+          />
+        </GalleryContainer>
       </Container>
     );
   }

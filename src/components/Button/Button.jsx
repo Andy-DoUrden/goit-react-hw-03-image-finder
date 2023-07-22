@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { LoadMoreBtn } from './Button.styled';
 
 const Button = ({ onClick, isHide }) => (
@@ -7,3 +8,8 @@ const Button = ({ onClick, isHide }) => (
 );
 
 export default Button;
+
+Button.propTypes = {
+  onClick: PropTypes.func,
+  isHide: PropTypes.bool,
+};

@@ -8,4 +8,20 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-export { Container };
+const GalleryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 800px;
+  padding: 20px;
+  margin-top: 20px;
+
+  background-color: #332b00;
+  border: 2px solid #f2ab26;
+  border-radius: 20px;
+`;
+
+export { Container, GalleryContainer };
